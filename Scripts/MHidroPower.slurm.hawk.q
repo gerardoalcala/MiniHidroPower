@@ -1,12 +1,19 @@
 #!/bin/bash --login
-#SBATCH --job-name=mini.hydro.Rt2500.Ri1000.0000001.0116718
+#SBATCH --job-name=mini.hydro.Rt0100.Ri0104.0000001.0116718
 #SBATCH --output=%x.out.%J
 #SBATCH --error=%x.err.%J
 #SBATCH --partition=compute_amd
 #SBATCH --ntasks-per-node=64
 #SBATCH --ntasks=64
-#SBATCH --time=72:00:00
-#SBATCH --account=scw1327
+#SBATCH --time=1:00:00
+#SBATCH --account=scw1001
+
+module purge
+module load R/4.0.0
+module load proj/4.9.3
+module load geos
+module load gdal
+module list
 
 ################################################
 NNODES=$SLURM_NNODES
@@ -39,8 +46,8 @@ cp $INPUTDIR/D-Edificaciones.tif $WDPATH
 cp $INPUTDIR/RasMaskTotal.tif $WDPATH
 cp -r $INPUTDIR/VectorFiles $WDPATH
 
-Rt=2500
-Ri=1000
+Rt=0100
+Ri=0104
 ni1=0000001
 nf1=0116718
 #sed -i -e "s/^ni1<-.*/ni1<-$ni1/" -e "s/^nf1<-.*/nf1<-$nf1/" ${script}

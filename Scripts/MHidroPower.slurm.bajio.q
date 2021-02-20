@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=mini.hydro.Rt2500.Ri1000.0000001.0116718
+#SBATCH --job-name=mini.hydro.Rt0100.Ri0104.0817027.0933744
 #SBATCH --output=%x.out.%J
 #SBATCH --error=%x.err.%J
 #SBATCH --partition=C1Mitad1
@@ -42,10 +42,10 @@ cp $INPUTDIR/D-Edificaciones.tif $WDPATH
 cp $INPUTDIR/RasMaskTotal.tif $WDPATH
 cp -r $INPUTDIR/VectorFiles $WDPATH
 
-Rt=2500
-Ri=1000
-ni1=0000001
-nf1=0116718
+Rt=0100
+Ri=0104
+ni1=0817027
+nf1=0933744
 #sed -i -e "s/^ni1<-.*/ni1<-$ni1/" -e "s/^nf1<-.*/nf1<-$nf1/" ${script}
 sed -i \
     -e "s/^ni1<-.*/ni1<-$ni1/" \
@@ -56,6 +56,6 @@ sed -i \
 
 time Rscript ${script}
 
-N=1
+N=8
 touch DatosMHP.csv
 cp DatosMHP.csv $DATOSDIR/DatosMHP_$N.csv
