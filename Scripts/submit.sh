@@ -18,6 +18,12 @@ STEPS=( 8 7 15 11 14 12 9 13 10 6 5 16 4 17 19 3 18 20 2 1 )
 #STEPS=( 13 )
 
 export DATOSDIR=$HOME/datos_Rt${Rt}_Ri${Ri}
+HOST_SELF=`hostname`
+if [[ ${HOST_SELF} =~ ^(cl1|cl2)$ ]]; then
+    export DATOSDIR="/scratch/$USER/datos_Rt${Rt}_Ri${Ri}"
+fi
+echo $DATOSDIR
+
 if [[ ! -d $DATOSDIR ]]; then
 	mkdir $DATOSDIR
         script="MHidroPower.slurm.q"
